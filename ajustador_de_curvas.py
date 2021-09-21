@@ -4,11 +4,10 @@ from gauss_solver import soluciona,imprime_matriz
 
 PRECISAO = 4
 
-def main():
-  entradax = (1,2,3,4,5,6,7,8)
-  entraday = (0.5,0.6,0.9,0.8,1.2,1.5,1.7,2.0)
-  grau = 2
-  g = lambda x,i:x**(i-1)
+def main(entradax,entraday,grau,g):
+  print("x:",entradax)
+  print("y:",entraday)
+  print()
 
   n = grau+1
   nelem = len(entradax)
@@ -52,5 +51,10 @@ def main():
 
 if(__name__=="__main__"):
   print()
-  f = main()
+  entradax = (-8,-6,-4,-2,0,2,4)
+  entraday = (30,10,9,6,5,4,4)
+  grau = 2
+  g = lambda x,i:x**(i-1)
+  f = main(entradax,entraday,grau,g)
+  print([f(x) for x in entradax])
   print(f(2))

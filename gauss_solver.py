@@ -1,7 +1,7 @@
 # Feito por Andre Uziel - andreuzielsd@gmail.com
 
-PRECISAO = 10
-PRECISAO_SOLUCAO = 4
+ARREDONDAMENTO = 10
+PRECISAO = 4
 
 def imprime_matriz(matriz):
   for linha in matriz:
@@ -41,7 +41,8 @@ def soluciona(matriz,pivoteamento_parcial=True,log=False):
       if(razao==0): continue
       if(log): print(f"M({coluna_pivot},{linha_atual})={razao}\n")
       for coluna_atual in range(coluna_pivot,qtd_colunas):
-        matriz[linha_atual][coluna_atual] = round(matriz[linha_atual][coluna_atual] - razao * matriz[coluna_pivot][coluna_atual],PRECISAO)
+        matriz[linha_atual][coluna_atual] = matriz[linha_atual][coluna_atual] - razao * matriz[coluna_pivot][coluna_atual]
+        # matriz[linha_atual][coluna_atual] = round(matriz[linha_atual][coluna_atual],ARREDONDAMENTO)
     if(log): imprime_matriz(matriz)
   vetor_x = [0] * (qtd_colunas-1)
 
@@ -49,7 +50,7 @@ def soluciona(matriz,pivoteamento_parcial=True,log=False):
   for linha in range(qtd_linhas-1,-1,-1):
     soma = sum(-matriz[linha][coluna]*vetor_x[coluna] for coluna in range(qtd_colunas-1))
     vetor_x[linha] = (matriz[linha][qtd_colunas-1]+soma)/matriz[linha][linha]
-    if(log): print(f"x{linha+1} = {round(vetor_x[linha],PRECISAO_SOLUCAO)}")
+    if(log): print(f"x{linha+1} = {round(vetor_x[linha],PRECISAO)}")
   
   return vetor_x
 
