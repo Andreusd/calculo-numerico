@@ -1,5 +1,5 @@
 # Feito por Andre Uziel - andreuzielsd@gmail.com
-
+from math import log
 from gauss_solver import soluciona,imprime_matriz
 
 PRECISAO = 4
@@ -29,7 +29,7 @@ def main(entradax,entraday,grau,g):
   print()
 
   [matriz_l[i].append(vetor_r[i]) for i in range(len(matriz_l))]
-  solucao = soluciona(matriz_l)
+  solucao = soluciona(matriz_l,log=True)
 
   print("solucao")
   print([round(x,PRECISAO) for x in solucao])
@@ -51,8 +51,10 @@ def main(entradax,entraday,grau,g):
 
 if(__name__=="__main__"):
   print()
-  entradax = (-8,-6,-4,-2,0,2,4)
-  entraday = (30,10,9,6,5,4,4)
+  entradax = [.8,1,2,3,4]
+  entraday = [2.4,2.5,2.8,3.1,3.4]
+  # entradax = [log(x) for x in entradax]
+  # entraday = [log(y) for y in entraday]
   grau = 2
   g = lambda x,i:x**(i-1)
   f = main(entradax,entraday,grau,g)

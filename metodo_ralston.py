@@ -6,7 +6,7 @@ x_final= 1
 delta_x = 0.1
 
 y_atual = y_inicial
-n_passos = int(x_final/delta_x)
+n_passos = int((x_final-x_inicial)/delta_x)
 
 for i in range(n_passos):
   k1 = delta_x*f(x_inicial+i*delta_x,y_atual)

@@ -1,13 +1,14 @@
 # Feito por Andre Uziel - andreuzielsd@gmail.com
 
 from gauss_solver import soluciona, imprime_matriz
+from math import cos
 
 PRECISAO = 4
 
 def main():
 
-  entradax = (3.0,3.2,3.4)
-  entraday = (20.08,24.53,29.96)
+  entradax = [0.5,1.2,2.3]
+  entraday = [3.4,4.5,2.8]
 
   nelem = len(entradax)
   if(nelem != len(entraday)):
@@ -21,7 +22,7 @@ def main():
 
   imprime_matriz(sistema)
 
-  solucao = soluciona(sistema,log=False)
+  solucao = soluciona(sistema,log=False,pivoteamento_parcial=False)
 
   print("solucao")
   print([round(x,PRECISAO) for x in solucao])
@@ -30,4 +31,6 @@ def main():
 
 if(__name__=="__main__"):
   f = main()
-  print(f(3.4))
+  print(f(0.5))
+  print(f(1.2))
+  print(f(2.3))
